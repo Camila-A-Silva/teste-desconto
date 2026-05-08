@@ -11,18 +11,18 @@ def test_des_maior_100():
         calcular_desconto(90, 120)
 
 def test_val_n_numerico():
-    with pytest.raises(TypeError, match="O valor total e desconto devem ser númericos."):
-        calcular_desconto("oito")
+    with pytest.raises(TypeError, match="Erro: O valor total e o desconto devem ser numéricos."):
+        calcular_desconto("oito", 20)
 
 def test_val_des_vazios():
-    with pytest.raises(TypeError, match="O valor total e desconto devem ser númericos."):
-        calcular_desconto()
+    with pytest.raises(TypeError, match="Erro: O valor total e o desconto devem ser numéricos."):
+        calcular_desconto(None, None)
 
 def test_so_um_for_informado():
-    with pytest.raises(TypeError, match="O valor total e desconto devem ser númericos."):
-        calcular_desconto(13)
+    with pytest.raises(TypeError, match="Erro: O valor total e o desconto devem ser numéricos."):
+        calcular_desconto(13, None)
 
 def test_negativo():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="O valor do produto não pode ser negativo."):
         calcular_desconto(-11, 20)
     
